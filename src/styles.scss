@@ -1,0 +1,17 @@
+body {
+    background: #f2f2f2;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.cards {
+    padding: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
