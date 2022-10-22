@@ -7,7 +7,7 @@ import "./styles.scss";
 export const Card = ({ name, flag, population, region, capital }: Country) => {
   return (
     <div className="card">
-      <Link to={`country/${name}`}>
+      <Link to={`${name}`}>
         <div className="card-image">
           <img src={flag} alt={name} />
         </div>
@@ -27,7 +27,9 @@ export const Card = ({ name, flag, population, region, capital }: Country) => {
             <div className="card-info-text">
               <h4>Capital: </h4>
               {capital.map((item) => {
-                return <p key={item}>{item}</p>;
+                return (
+                  <p key={item}>{item}</p>
+                );
               })}
             </div>
           )}

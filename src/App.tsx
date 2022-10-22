@@ -19,7 +19,6 @@ function App() {
 
   return (
     <div className="content">
-      Coutries page
       <div className="cards">
         {data &&
           data.map((item) => {

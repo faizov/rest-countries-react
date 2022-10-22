@@ -5,7 +5,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { store } from "./app/store";
+
 import App from "./App";
+import { PageLayout } from "./copmonents/pageLayout";
 import { Country } from "./pages/country";
 
 const container = document.getElementById("root")!;
@@ -16,9 +18,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<PageLayout />}>
             <Route index element={<App />} />
-            <Route path="country/:countryName" element={<Country />} />
+            <Route path=":countryName" element={<Country />} />
           </Route>
         </Routes>
       </BrowserRouter>
