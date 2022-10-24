@@ -5,7 +5,15 @@ body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5 {
+input {
+    font-family: "Nunito Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
     margin: 0;
 }
 
@@ -21,10 +29,24 @@ a {
     color: #000000;
 }
 
+.content {
+    padding: 30px 80px;
+
+    .search {
+        input {
+            width: 400px;
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            outline: none;
+            padding: 15px 30px;
+            box-shadow: 1px 1px 6px 0px #9f9f9f;
+        }
+    }
+}
+
 .cards {
-    padding: 30px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-start;
 }

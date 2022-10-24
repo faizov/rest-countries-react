@@ -12,7 +12,7 @@ export const Card = ({ name, flag, population, region, capital }: Country) => {
           <img src={flag} alt={name} />
         </div>
         <div className="card-info">
-          <div>
+          <div className="card-info-title">
             <h3>{name}</h3>
           </div>
           <div className="card-info-text">
