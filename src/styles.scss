@@ -33,20 +33,32 @@ a {
     padding: 30px 80px;
 
     .search {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
         input {
             width: 400px;
             border: 1px solid #c4c4c4;
             border-radius: 5px;
             outline: none;
             padding: 15px 30px;
-            box-shadow: 1px 1px 6px 0px #9f9f9f;
+            box-shadow: 1px 1px 3px 0px #0000002e;
         }
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: flex-start;
     }
 }
 
-.cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: flex-start;
+@media screen and (max-width: 900px) {
+    .content {
+        .search input {
+            width: 100%;
+        }
+    }
 }
