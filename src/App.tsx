@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { skipToken } from "@reduxjs/toolkit/query/react";
 
 import {
@@ -10,6 +10,27 @@ import { Card } from "./copmonents/card";
 
 import "./styles.scss";
 
+const listSelect = [
+  {
+    label: "All",
+  },
+  {
+    label: "Africa",
+  },
+  {
+    label: "Americas",
+  },
+  {
+    label: "Asia",
+  },
+  {
+    label: "Europe",
+  },
+  {
+    label: "Oceania",
+  },
+];
+
 function App() {
   const {
     data: dataAll,
@@ -19,6 +40,9 @@ function App() {
   const [search, setSearch] = useState("");
 
   const [region, setRegion] = useState("All");
+  const [hideSelect, setHideSelect] = useState(false);
+  const selectMenu = useRef<HTMLDivElement>(null);
+
   const { data: dataByRegion, isLoading: byRegionLoading } =
     useGetCountriesByRegionQuery(region === "All" ? skipToken : region);
 
@@ -44,8 +68,23 @@ function App() {
   };
 
   const handleChangeRegion = (e: string) => {
+    setHideSelect(false);
     setRegion(e);
   };
+
+  const closeOpenMenus = (e: any) => {
+    if (
+      selectMenu.current &&
+      hideSelect &&
+      !selectMenu.current.contains(e.target)
+    ) {
+      setHideSelect(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeOpenMenus);
+  }, [hideSelect]);
 
   if (error) {
     if ("status" in error) {
@@ -63,15 +102,20 @@ function App() {
           placeholder="Search for a counrty..."
           onChange={(e) => handleChange(e.target.value)}
         />
-
-        <select onChange={(e) => handleChangeRegion(e.target.value)}>
-          <option value="All">All</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
+        <div className="content-select" ref={selectMenu}>
+          <button onClick={() => setHideSelect(!hideSelect)}>{region}</button>
+          {hideSelect && (
+            <ul>
+              {listSelect.map((option) => {
+                return (
+                  <li onClick={() => handleChangeRegion(option.label)}>
+                    {option.label}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
       </div>
       <div className="cards">
         {result &&

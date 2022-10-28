@@ -53,6 +53,53 @@ a {
         flex-wrap: wrap;
         align-items: flex-start;
     }
+
+    &-select {
+        position: relative;
+        width: 200px;
+        button {
+            background: #ffffff;
+            display: flex;
+            border: 0;
+            border-radius: 5px;
+            outline: none;
+            width: 100%;
+            cursor: pointer;
+            padding: 15px;
+            background-image: url("https://icons.veryicon.com/png/o/miscellaneous/massager/drop-down-arrow-3.png");
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: calc(100% - 20px) center;
+            box-shadow: 1px 1px 3px 0px #0000002e;
+        }
+
+        ul {
+            position: absolute;
+            top: 40px;
+            background: #ffffff;
+            border-radius: 10px;
+            width: 100%;
+            list-style: none;
+            padding: 0;
+
+            li {
+                padding: 8px 20px;
+                cursor: pointer;
+                
+                &:first-child {
+                    border-radius: 10px 10px 0 0;
+                }
+
+                &:last-child {
+                    border-radius: 0 0 10px 10px;
+                }
+
+                &:hover {
+                    background: #c4c4c4;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
