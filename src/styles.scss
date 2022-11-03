@@ -9,6 +9,7 @@ input {
     font-family: "Nunito Sans", sans-serif;
 }
 
+p,
 h1,
 h2,
 h3,
@@ -29,9 +30,7 @@ a {
     color: #000000;
 }
 
-.content {
-    padding: 30px 80px;
-
+.list-countries {
     .search {
         display: flex;
         align-items: center;
@@ -89,7 +88,7 @@ a {
             li {
                 padding: 8px 20px;
                 cursor: pointer;
-                
+
                 &:first-child {
                     border-radius: 10px 10px 0 0;
                 }

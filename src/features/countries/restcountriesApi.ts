@@ -7,6 +7,7 @@ type Country = [
     };
     flags: {
       png: string;
+      svg: string;
     };
     population: number;
     region: string;
@@ -30,4 +31,8 @@ export const countriesApi = createApi({
   }),
 });
 
-export const { useGetCountryByNameQuery, useGetCountriesByRegionQuery, useGetCountriesQuery } = countriesApi;
+export const {
+  useGetCountryByNameQuery,
+  useGetCountriesByRegionQuery,
+  useGetCountriesQuery,
+} = countriesApi;

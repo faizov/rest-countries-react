@@ -95,14 +95,14 @@ function App() {
   }
 
   return (
-    <div className="content">
+    <div className="list-countries">
       <div className="search">
         <input
           type="text"
           placeholder="Search for a counrty..."
           onChange={(e) => handleChange(e.target.value)}
         />
-        <div className="content-select" ref={selectMenu}>
+        <div className="list-countries-select" ref={selectMenu}>
           <button onClick={() => setHideSelect(!hideSelect)}>{region}</button>
           {hideSelect && (
             <ul>

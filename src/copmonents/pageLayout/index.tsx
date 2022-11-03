@@ -17,7 +17,9 @@ export const PageLayout = () => {
           <h4>Dark Mode</h4>
         </button>
       </div>
-      <Outlet />
+      <div className="content">
+        <Outlet />
+      </div>
     </>
   );
 };
