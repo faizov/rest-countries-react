@@ -12,11 +12,15 @@ export const Country = () => {
   );
 
   const country = data && data[0];
+  const nativeName =
+    country && Object.values(country?.name?.nativeName)[0].official;
+  const currencies = country && Object.values(country?.currencies);
+  const languages = country && Object.values(country?.languages);
 
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  console.log("country", country);
+
   return (
     <div className="country-page">
       <button
@@ -38,39 +42,60 @@ export const Country = () => {
         </div>
         <div className="country-page-info-details">
           <div>
-            <h1>{country?.region}</h1>
+            <h1>{country?.name.common}</h1>
             <div className="country-page-info-details-lists">
               <ul>
                 <li>
                   <h4>Native Name: </h4>
+                  <p>{nativeName}</p>
                 </li>
                 <li>
                   <h4>Population: </h4>
-                  <p></p>
+                  <p>{country?.population}</p>
                 </li>
                 <li>
                   <h4>Region: </h4>
-                  <p>{country?.name.common}</p>
+                  <p>{country?.region}</p>
                 </li>
                 <li>
                   <h4>Sub Region: </h4>
+                  <p>{country?.subregion}</p>
                 </li>
                 <li>
                   <h4>Capital: </h4>
+                  {country?.capital
+                    .map<React.ReactNode>((item) => {
+                      return <p>{item}</p>;
+                    })
+                    .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
               </ul>
 
               <ul>
                 <li>
-                  <h4>Top Level Domain: </h4> <p></p>
+                  <h4>Top Level Domain: </h4>
+                  {country?.tld
+                    .map<React.ReactNode>((item) => {
+                      return <p>{item}</p>;
+                    })
+                    .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
                 <li>
                   <h4>Currencies: </h4>
-                  <p></p>
+                  {currencies
+                    ?.map<React.ReactNode>((item) => {
+                      return <p>{item.name}</p>;
+                    })
+                    .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
                 <li>
                   <h4>Languages: </h4>
-                  <p></p>
+                  {languages
+                    ?.map<React.ReactNode>((item) => {
+                      console.log("languages", languages?.length);
+                      return <p>{item}</p>;
+                    })
+                    .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
               </ul>
             </div>
