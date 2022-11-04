@@ -1,6 +1,9 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
-import { useGetCountryByNameQuery } from "../../features/countries/restcountriesApi";
+import {
+  useGetCountryByNameQuery,
+  useGetCountriesByCodeQuery,
+} from "../../features/countries/restcountriesApi";
 
 import "./styles.scss";
 
@@ -12,6 +15,8 @@ export const Country = () => {
   );
 
   const country = data && data[0];
+  const { data: CountriesCode } = useGetCountriesByCodeQuery(country?.borders);
+
   const nativeName =
     country && Object.values(country?.name?.nativeName)[0].official;
   const currencies = country && Object.values(country?.currencies);
@@ -63,28 +68,30 @@ export const Country = () => {
                 </li>
                 <li>
                   <h4>Capital: </h4>
-                  {country?.capital
-                    .map<React.ReactNode>((item) => {
-                      return <p>{item}</p>;
-                    })
-                    .reduce((prev, curr) => [prev, ",", curr])}
+                  {country?.capital &&
+                    country?.capital
+                      .map<React.ReactNode>((item) => {
+                        return <p key={item}>{item}</p>;
+                      })
+                      .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
               </ul>
 
               <ul>
                 <li>
                   <h4>Top Level Domain: </h4>
-                  {country?.tld
-                    .map<React.ReactNode>((item) => {
-                      return <p>{item}</p>;
-                    })
-                    .reduce((prev, curr) => [prev, ",", curr])}
+                  {country?.tld &&
+                    country?.tld
+                      .map<React.ReactNode>((item) => {
+                        return <p key={item}>{item}</p>;
+                      })
+                      .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
                 <li>
                   <h4>Currencies: </h4>
                   {currencies
                     ?.map<React.ReactNode>((item) => {
-                      return <p>{item.name}</p>;
+                      return <p key={item.name}>{item.name}</p>;
                     })
                     .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
@@ -92,13 +99,27 @@ export const Country = () => {
                   <h4>Languages: </h4>
                   {languages
                     ?.map<React.ReactNode>((item) => {
-                      console.log("languages", languages?.length);
-                      return <p>{item}</p>;
+                      return <p key={item}>{item}</p>;
                     })
                     .reduce((prev, curr) => [prev, ",", curr])}
                 </li>
               </ul>
             </div>
+            {CountriesCode && (
+              <div className="country-page-info-details-borders">
+                <h4>Border Countries:</h4>
+
+                <div>
+                  {CountriesCode.map((item) => {
+                    return (
+                      <Link to={`/${item.name.common}`}>
+                        <button>{item.name.common}</button>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

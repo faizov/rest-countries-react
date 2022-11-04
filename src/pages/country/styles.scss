@@ -50,6 +50,28 @@
                     }
                 }
             }
+
+            &-borders {
+                display: flex;
+                align-items: baseline;
+                margin-top: 30px;
+
+                h4 {
+                    margin-right: 20px;
+                }
+
+                button {
+                    padding: 5px 20px;
+                    box-shadow: 1px 1px 3px 0px #0000002e;
+                    margin-top: 10px;
+                    margin-right: 10px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        box-shadow: 0px 1px 3px 2px #0000002e;
+                    }
+                }
+            }
         }
     }
 }

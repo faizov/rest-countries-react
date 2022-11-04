@@ -21,6 +21,7 @@ type Country = [
     tld: [];
     currencies: [{ name: string; symbol: string }];
     languages: [];
+    borders: string[];
   }
 ];
 
@@ -34,8 +35,11 @@ export const countriesApi = createApi({
     getCountriesByRegion: builder.query<Country, string>({
       query: (region) => `region/${region}`,
     }),
-    getCountryByName: builder.query<Country, string>({
+    getCountryByName: builder.query<Country, any>({
       query: (name) => `name/${name}`,
+    }),
+    getCountriesByCode: builder.query<Country, string[] | undefined>({
+      query: (codes) => `alpha?codes=${codes}`,
     }),
   }),
 });
@@ -44,4 +48,5 @@ export const {
   useGetCountryByNameQuery,
   useGetCountriesByRegionQuery,
   useGetCountriesQuery,
+  useGetCountriesByCodeQuery
 } = countriesApi;
