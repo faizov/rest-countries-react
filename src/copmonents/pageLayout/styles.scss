@@ -1,3 +1,43 @@
+@import "../../styles/theme-variables.scss";
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    @include themify($themes) {
+        color: themed("colorText");
+    }
+}
+
+input {
+    @include themify($themes) {
+        background: themed("colorBackgroundInput");
+        color: themed("colorText");
+    }
+
+    &::placeholder {
+        @include themify($themes) {
+            color: themed("colorText");
+        }
+    }
+}
+
+button {
+    @include themify($themes) {
+        background: themed("colorBackgroundHeader");
+        color: themed("colorText");
+    }
+}
+
+.global-theme {
+    height: 100vh;
+    @include themify($themes) {
+        background: themed("colorBackgroundBody");
+    }
+}
+
 .content {
     padding: 20px 80px;
 }
@@ -6,8 +46,11 @@
     display: flex;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #ffffff;
     box-shadow: 0px 2px 10px 0px rgba(34, 60, 80, 0.2);
+
+    @include themify($themes) {
+        background: themed("colorBackgroundHeader");
+    }
 
     button {
         display: flex;

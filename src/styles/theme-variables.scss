@@ -1,0 +1,40 @@
+$themes: (
+    light: (
+        colorInput: hsl(0, 0%, 52%),
+        colorText: hsl(200, 15%, 8%),
+        colorBackgroundInput: hsl(0, 0%, 98%),
+        colorBackgroundHeader: hsl(0, 0%, 100%),
+        colorBackgroundBody: hsl(0, 0%, 98%),
+    ),
+    dark: (
+        colorInput: hsl(0, 0%, 52%),
+        colorText: hsl(0, 0%, 100%),
+        colorBackgroundInput: hsl(209, 23%, 22%),
+        colorBackgroundHeader: hsl(209, 23%, 22%),
+        colorBackgroundBody: hsl(207, 26%, 17%),
+    ),
+);
+
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+            @content;
+
+            transition: 0.2s;
+            $theme-map: null !global;
+        }
+    }
+}
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import { countriesApi } from "../features/countries/restcountriesApi";
+import themeReducer from "../features/theme/themeSlice";
 
 export const store = configureStore({
   reducer: {
     [countriesApi.reducerPath]: countriesApi.reducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(countriesApi.middleware),

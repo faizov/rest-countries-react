@@ -130,7 +130,9 @@ export const Country = () => {
                   {CountriesCode.map((item) => {
                     return (
                       <Link to={`/${item.name.common}`}>
-                        <button>{item.name.common}</button>
+                        <button>
+                          <p>{item.name.common}</p>
+                        </button>
                       </Link>
                     );
                   })}

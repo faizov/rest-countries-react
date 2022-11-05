@@ -1,3 +1,5 @@
+@import "../../styles/theme-variables.scss";
+
 .card {
     cursor: pointer;
     width: 350px;
@@ -33,6 +35,11 @@
 
             }
         }
+    }
+
+    @include themify($themes) {
+        background: themed("colorBackgroundHeader");
+        color: themed("colorText");
     }
 }
 
