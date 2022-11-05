@@ -19,3 +19,13 @@
         }
     }
 }
+
+@media screen and (max-width: 900px) {
+    .content {
+        padding: 20px;
+    }
+
+    .header {
+        padding: 20px;
+    }
+}

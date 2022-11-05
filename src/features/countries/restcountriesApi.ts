@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-type Country = [
+type CountryApi = [
   {
     name: {
       common: string;
@@ -29,16 +29,16 @@ export const countriesApi = createApi({
   reducerPath: "countriesApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v3.1/" }),
   endpoints: (builder) => ({
-    getCountries: builder.query<Country, string>({
+    getCountries: builder.query<CountryApi, string>({
       query: () => `all`,
     }),
-    getCountriesByRegion: builder.query<Country, string>({
+    getCountriesByRegion: builder.query<CountryApi, string>({
       query: (region) => `region/${region}`,
     }),
-    getCountryByName: builder.query<Country, any>({
+    getCountryByName: builder.query<CountryApi, string>({
       query: (name) => `name/${name}`,
     }),
-    getCountriesByCode: builder.query<Country, string[] | undefined>({
+    getCountriesByCode: builder.query<CountryApi, string[] | undefined>({
       query: (codes) => `alpha?codes=${codes}`,
     }),
   }),

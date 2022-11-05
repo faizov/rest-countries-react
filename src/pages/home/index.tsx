@@ -4,34 +4,14 @@ import { skipToken } from "@reduxjs/toolkit/query/react";
 import {
   useGetCountriesQuery,
   useGetCountriesByRegionQuery,
-} from "./features/countries/restcountriesApi";
+} from "../../features/countries/restcountriesApi";
 
-import { Card } from "./copmonents/card";
+import { Card } from "../../copmonents/card";
 
+import { listSelect } from "./config";
 import "./styles.scss";
 
-const listSelect = [
-  {
-    label: "All",
-  },
-  {
-    label: "Africa",
-  },
-  {
-    label: "Americas",
-  },
-  {
-    label: "Asia",
-  },
-  {
-    label: "Europe",
-  },
-  {
-    label: "Oceania",
-  },
-];
-
-function App() {
+export const Home = () => {
   const {
     data: dataAll,
     error,
@@ -134,6 +114,4 @@ function App() {
       </div>
     </div>
   );
-}
-
-export default App;
+};
