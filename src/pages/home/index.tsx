@@ -78,6 +78,14 @@ export const Home = () => {
     }
   }
 
+  if (allLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="list-countries">
       <div className="search">

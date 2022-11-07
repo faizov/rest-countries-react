@@ -20,7 +20,9 @@
 
             svg {
                 position: absolute;
+                height: fill-available;
                 height: -webkit-fill-available;
+                height: -moz-available;
                 left: 20px;
             }
         }
@@ -84,7 +86,6 @@
                         background: themed("colorBackgroundHover");
                     }
                 }
-                
             }
         }
     }
