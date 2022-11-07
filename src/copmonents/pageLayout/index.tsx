@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 
 import { setTheme } from "../../features/theme/themeSlice";
 
-import DarkmodeIcon from "../../assets/icons/darkmode.png";
+import { DarkModeIcon } from "../../assets/icons/DarkModeIcon";
 
 import "./styles.scss";
 
@@ -24,7 +24,7 @@ export const PageLayout = () => {
             <h2>Where in the world</h2>
           </Link>
           <button onClick={() => onChangeTheme()}>
-            <img src={DarkmodeIcon} alt="" />
+            <DarkModeIcon />
             <h4>Dark Mode</h4>
           </button>
         </div>

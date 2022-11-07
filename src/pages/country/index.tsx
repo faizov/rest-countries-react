@@ -5,6 +5,8 @@ import {
   useGetCountriesByCodeQuery,
 } from "../../features/countries/restcountriesApi";
 
+import { ArrowBackIcon } from "../../assets/icons/ArrowBackIcon";
+
 import "./styles.scss";
 
 export const Country = () => {
@@ -35,11 +37,7 @@ export const Country = () => {
         }}
         className="country-page-back"
       >
-        <img
-          width={16}
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Feather-arrows-arrow-left.svg/2048px-Feather-arrows-arrow-left.svg.png"
-          alt=""
-        />
+        <ArrowBackIcon />
         <p>Back</p>
       </button>
       <div className="country-page-info">

@@ -11,6 +11,17 @@ h5 {
     }
 }
 
+svg {
+    width: 16px;
+    margin-right: 8px;
+    path {
+        @include themify($themes) {
+            fill: themed("colorText");
+            transition: 0.2s;
+        }
+    }
+}
+
 input {
     @include themify($themes) {
         background: themed("colorBackgroundInput");
@@ -32,7 +43,8 @@ button {
 }
 
 .global-theme {
-    height: 100vh;
+    transition: 0.2s;
+    min-height: 100vh;
     @include themify($themes) {
         background: themed("colorBackgroundBody");
     }

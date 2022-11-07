@@ -9,6 +9,10 @@ import {
 import { Card } from "../../copmonents/card";
 
 import { listSelect } from "./config";
+
+import { SearchIcon } from "../../assets/icons/SearchIcon";
+import { ArrowDownIcon } from "../../assets/icons/ArrowDownIcon";
+
 import "./styles.scss";
 
 export const Home = () => {
@@ -77,13 +81,18 @@ export const Home = () => {
   return (
     <div className="list-countries">
       <div className="search">
-        <input
-          type="text"
-          placeholder="Search for a counrty..."
-          onChange={(e) => handleChange(e.target.value)}
-        />
+        <div className="search-input">
+          <SearchIcon />
+          <input
+            type="text"
+            placeholder="Search for a counrty..."
+            onChange={(e) => handleChange(e.target.value)}
+          />
+        </div>
         <div className="list-countries-select" ref={selectMenu}>
-          <button onClick={() => setHideSelect(!hideSelect)}>{region}</button>
+          <button onClick={() => setHideSelect(!hideSelect)}>
+            {region} <ArrowDownIcon />
+          </button>
           {hideSelect && (
             <ul>
               {listSelect.map((option) => {
