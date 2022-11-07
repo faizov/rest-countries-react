@@ -26,7 +26,19 @@ export const Country = () => {
   const languages = country?.languages && Object.values(country?.languages);
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return (
+      <div>
+        <p>Loading ...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    if ("status" in error) {
+      const errMsg =
+        "error" in error ? error.error : JSON.stringify(error.data);
+      return <div>Error: {errMsg}</div>;
+    }
   }
 
   return (
